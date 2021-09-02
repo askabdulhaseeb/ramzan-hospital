@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ramdazhospital/database/patient_info_api.dart';
-import 'package:ramdazhospital/models/patient_info.dart';
-import 'package:ramdazhospital/screens/home_screen/home_screen.dart';
-import 'package:ramdazhospital/screens/widgets/custom_textformfield.dart';
-import 'package:ramdazhospital/screens/widgets/show_loading.dart';
-import 'package:ramdazhospital/utilities/custom_validator.dart';
-import 'package:ramdazhospital/utilities/utilities.dart';
 import 'package:uuid/uuid.dart';
+import '../../database/patient_info_api.dart';
+import '../../models/patient_info.dart';
+import '../../utilities/custom_validator.dart';
+import '../../utilities/utilities.dart';
+import '../home_screen/home_screen.dart';
+import '../widgets/custom_textformfield.dart';
+import '../widgets/show_loading.dart';
 
 class RegisterPatientScreen extends StatefulWidget {
   const RegisterPatientScreen({Key? key}) : super(key: key);

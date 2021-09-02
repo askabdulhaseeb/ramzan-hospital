@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ramdazhospital/database/department_api.dart';
-import 'package:ramdazhospital/models/department.dart';
-import 'package:ramdazhospital/providers/department_provider.dart';
-import 'package:ramdazhospital/screens/widgets/custom_textformfield.dart';
-import 'package:ramdazhospital/utilities/custom_validator.dart';
 import 'package:uuid/uuid.dart';
+import '../../database/department_api.dart';
+import '../../models/department.dart';
+import '../../providers/department_provider.dart';
+import '../../utilities/custom_validator.dart';
+import 'custom_textformfield.dart';
 
 Future<dynamic> registerDepartment(BuildContext context) {
   final TextEditingController _dep = TextEditingController();
@@ -26,7 +26,7 @@ Future<dynamic> registerDepartment(BuildContext context) {
               ElevatedButton(
             onPressed: () async {
               if (_dep.text.length > 1) {
-                Department department = Department(
+                final Department department = Department(
                   depId: const Uuid().v1(),
                   name: _dep.text.trim(),
                 );

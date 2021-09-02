@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ramdazhospital/models/department.dart';
-import 'package:ramdazhospital/utilities/custom_toast.dart';
+import '../models/department.dart';
+import '../utilities/custom_toast.dart';
 
 class DepartmentAPI {
   static const String _colloection = 'departments';

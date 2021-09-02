@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ramdazhospital/database/user_local_data.dart';
+import '../database/user_local_data.dart';
 
 class DoctorInfo {
   DoctorInfo({

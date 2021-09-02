@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ramdazhospital/models/doctor_info.dart';
+import '../models/doctor_info.dart';
 
 class DoctorInfoAPI {
   static const String _colloection = 'doctor_info';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ramdazhospital/database/patient_info_api.dart';
-import 'package:ramdazhospital/database/user_local_data.dart';
-import 'package:ramdazhospital/models/patient_info.dart';
-import 'package:ramdazhospital/screens/widgets/circular_profile_image.dart';
-import 'package:ramdazhospital/screens/widgets/custom_app_drawer.dart';
-import 'package:ramdazhospital/utilities/utilities.dart';
+import '../../database/patient_info_api.dart';
+import '../../database/user_local_data.dart';
+import '../../models/patient_info.dart';
+import '../../utilities/utilities.dart';
+import '../widgets/circular_profile_image.dart';
+import '../widgets/custom_app_drawer.dart';
 import 'total_overview_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: FutureBuilder(
+              child: FutureBuilder<List<PatientInfo>?>(
                 future: PatientInfoAPI().getPatients(),
                 builder: (
                   BuildContext context,

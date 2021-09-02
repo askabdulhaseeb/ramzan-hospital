@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ramdazhospital/models/treatments.dart';
-import 'package:ramdazhospital/utilities/custom_toast.dart';
+import '../models/treatments.dart';
+import '../utilities/custom_toast.dart';
 
 class TreatmentAPI {
   static const String _collection = 'treatments';

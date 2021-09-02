@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ramdazhospital/providers/department_provider.dart';
-import 'package:ramdazhospital/providers/patients_provider.dart';
-import 'package:ramdazhospital/screens/register_doctor/register_doctor.dart';
-import 'package:ramdazhospital/screens/register_patient/register_patient.dart';
 import 'database/user_local_data.dart';
+import 'providers/department_provider.dart';
+import 'providers/patients_provider.dart';
 import 'screens/home_screen/home_screen.dart';
 import 'screens/login_screen/login_screen.dart';
+import 'screens/register_doctor/register_doctor.dart';
+import 'screens/register_patient/register_patient.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

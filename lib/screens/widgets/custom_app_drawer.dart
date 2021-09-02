@@ -1,16 +1,13 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:ramdazhospital/database/auth.dart';
-import 'package:ramdazhospital/database/user_local_data.dart';
-import 'package:ramdazhospital/screens/login_screen/login_screen.dart';
-import 'package:ramdazhospital/screens/register_doctor/register_doctor.dart';
-import 'package:ramdazhospital/screens/register_patient/register_patient.dart';
-import 'package:ramdazhospital/screens/widgets/circular_profile_image.dart';
-import 'package:ramdazhospital/screens/widgets/copyright.dart';
-import 'package:ramdazhospital/screens/widgets/custom_textformfield.dart';
-import 'package:ramdazhospital/screens/widgets/register_department.dart';
-import 'package:ramdazhospital/utilities/utilities.dart';
-
+import '../../database/auth.dart';
+import '../../database/user_local_data.dart';
+import '../../utilities/utilities.dart';
+import '../login_screen/login_screen.dart';
+import '../register_doctor/register_doctor.dart';
+import '../register_patient/register_patient.dart';
+import 'circular_profile_image.dart';
+import 'copyright.dart';
+import 'register_department.dart';
 import 'register_treatment.dart';
 
 class CustomAppDrawer extends StatefulWidget {

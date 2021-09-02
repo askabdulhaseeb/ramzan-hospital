@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ramdazhospital/models/patient_info.dart';
-import 'package:ramdazhospital/utilities/custom_toast.dart';
+import '../models/patient_info.dart';
+import '../utilities/custom_toast.dart';
 
 class PatientInfoAPI {
   static const String _colloection = 'patientsInfo';
@@ -17,7 +17,7 @@ class PatientInfoAPI {
   }
 
   Future<List<PatientInfo>> getPatients() async {
-    QuerySnapshot<Map<String, dynamic>> docs =
+    final QuerySnapshot<Map<String, dynamic>> docs =
         await _instance.collection(_colloection).get();
     final List<PatientInfo> patient = <PatientInfo>[];
     // ignore: avoid_function_literals_in_foreach_calls

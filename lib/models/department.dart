@@ -1,7 +1,5 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ramdazhospital/database/user_local_data.dart';
+import '../database/user_local_data.dart';
 
 class Department {
   Department({
@@ -17,7 +15,7 @@ class Department {
   bool? status;
 
   Map<String, dynamic> toMap() {
-    return {
+    return <String, dynamic>{
       'dep_id': depId,
       'name': name,
       'created_by': createdBy ?? UserLocalData.getUserUID,

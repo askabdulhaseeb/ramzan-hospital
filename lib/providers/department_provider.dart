@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ramdazhospital/database/user_local_data.dart';
-import 'package:ramdazhospital/models/department.dart';
+import '../database/user_local_data.dart';
+import '../models/department.dart';
 
 class DepartmentProvider extends ChangeNotifier {
   final List<Department> _dep = <Department>[

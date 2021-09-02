@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ramdazhospital/database/treatment_api.dart';
-import 'package:ramdazhospital/models/treatments.dart';
-import 'package:ramdazhospital/utilities/custom_validator.dart';
 import 'package:uuid/uuid.dart';
-
+import '../../database/treatment_api.dart';
+import '../../models/treatments.dart';
+import '../../utilities/custom_validator.dart';
 import 'custom_textformfield.dart';
 
 Future<dynamic> registerTreatment(BuildContext context) {
@@ -48,6 +47,7 @@ Future<dynamic> registerTreatment(BuildContext context) {
                 fee: double.parse(_fee.text),
               );
               await TreatmentAPI().addTreatment(treatment);
+              // ignore: use_build_context_synchronously
               Navigator.of(context).pop();
             }
           },

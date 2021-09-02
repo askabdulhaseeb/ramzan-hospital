@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ramdazhospital/database/doctor_indo_api.dart';
-import 'package:ramdazhospital/models/department.dart';
-import 'package:ramdazhospital/models/doctor_info.dart';
-import 'package:ramdazhospital/providers/department_provider.dart';
-import 'package:ramdazhospital/screens/home_screen/home_screen.dart';
-import 'package:ramdazhospital/screens/widgets/custom_dropdown.dart';
-import 'package:ramdazhospital/screens/widgets/custom_inkwell_button.dart';
-import 'package:ramdazhospital/screens/widgets/custom_textformfield.dart';
-import 'package:ramdazhospital/screens/widgets/register_department.dart';
-import 'package:ramdazhospital/utilities/custom_validator.dart';
-import 'package:ramdazhospital/utilities/utilities.dart';
 import 'package:uuid/uuid.dart';
+import '../../database/doctor_indo_api.dart';
+import '../../models/department.dart';
+import '../../models/doctor_info.dart';
+import '../../providers/department_provider.dart';
+import '../../utilities/custom_validator.dart';
+import '../../utilities/utilities.dart';
+import '../home_screen/home_screen.dart';
+import '../widgets/custom_dropdown.dart';
+import '../widgets/custom_inkwell_button.dart';
+import '../widgets/custom_textformfield.dart';
+import '../widgets/register_department.dart';
 
 class RegisterDoctorScreen extends StatefulWidget {
   const RegisterDoctorScreen({Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
   @override
   Widget build(BuildContext context) {
     final DepartmentProvider dep = Provider.of<DepartmentProvider>(context);
-    (context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('New Doctor'),
