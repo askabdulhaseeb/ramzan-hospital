@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ramdazhospital/database/user_local_data.dart';
 
 class DoctorInfo {
   DoctorInfo({
@@ -22,7 +23,7 @@ class DoctorInfo {
       'name': name,
       'fee': fee,
       'dep_id': depID,
-      'added_by': addedBy,
+      'added_by': UserLocalData.getUserUID,
       'status': status,
     };
   }

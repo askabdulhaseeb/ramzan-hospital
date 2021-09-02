@@ -18,7 +18,7 @@ class PatientInfoAPI {
 
   Future<List<PatientInfo>> getPatients() async {
     QuerySnapshot<Map<String, dynamic>> docs =
-        await _instance.collection('patients').get();
+        await _instance.collection(_colloection).get();
     final List<PatientInfo> patient = <PatientInfo>[];
     // ignore: avoid_function_literals_in_foreach_calls
     docs.docs.forEach((QueryDocumentSnapshot<Map<String, dynamic>> element) {

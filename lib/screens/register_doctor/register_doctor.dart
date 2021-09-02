@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ramdazhospital/database/doctor_indo_api.dart';
 import 'package:ramdazhospital/models/department.dart';
+import 'package:ramdazhospital/models/doctor_info.dart';
 import 'package:ramdazhospital/providers/department_provider.dart';
 import 'package:ramdazhospital/screens/home_screen/home_screen.dart';
 import 'package:ramdazhospital/screens/widgets/custom_dropdown.dart';
@@ -9,6 +11,7 @@ import 'package:ramdazhospital/screens/widgets/custom_textformfield.dart';
 import 'package:ramdazhospital/screens/widgets/register_department.dart';
 import 'package:ramdazhospital/utilities/custom_validator.dart';
 import 'package:ramdazhospital/utilities/utilities.dart';
+import 'package:uuid/uuid.dart';
 
 class RegisterDoctorScreen extends StatefulWidget {
   const RegisterDoctorScreen({Key? key}) : super(key: key);
@@ -24,6 +27,8 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final DepartmentProvider dep = Provider.of<DepartmentProvider>(context);
+    (context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('New Doctor'),
@@ -53,33 +58,35 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
                 keyboardType: TextInputType.number,
                 validator: (String? value) => CustomValidator.retaunNull(value),
               ),
-              Consumer<DepartmentProvider>(
-                builder: (
-                  BuildContext context,
-                  DepartmentProvider dep,
-                  Widget? child,
-                ) =>
-                    CustomDropdownButton(
-                  items: dep.department
-                      .map((Department e) => DropdownMenuItem<String>(
-                            value: e.depId,
-                            child: Text(e.name!),
-                          ))
-                      .toList(),
-                  selectedItem: dep.selectDep,
-                  hint: 'Department',
-                  onChange: (String? value) => dep.onChange(value),
-                  onPressIcon: () => registerDepartment(context),
-                ),
+              CustomDropdownButton(
+                items: dep.department
+                    .map((Department e) => DropdownMenuItem<String>(
+                          value: e.depId,
+                          child: Text(e.name!),
+                        ))
+                    .toList(),
+                selectedItem: dep.selectDep,
+                hint: 'Department',
+                onChange: (String? value) => dep.onChange(value),
+                onPressIcon: () => registerDepartment(context),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width / 2.5,
                 child: CustomInkWellButton(
                   onTap: () {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      HomeScreen.routeName,
-                      (Route<dynamic> route) => false,
-                    );
+                    if (_key.currentState!.validate() &&
+                        dep.selectDep != null) {
+                      final DoctorInfo doctor = DoctorInfo(
+                        doctorID: const Uuid().v1(),
+                        name: _name.text.trim(),
+                        fee: double.parse(_fee.text.trim()),
+                        depID: dep.selectDep,
+                      );
+                      DoctorInfoAPI().addDoctor(doctor);
+                      Navigator.of(context).pushReplacementNamed(
+                        HomeScreen.routeName,
+                      );
+                    }
                   },
                   child: const Text('Save'),
                 ),
