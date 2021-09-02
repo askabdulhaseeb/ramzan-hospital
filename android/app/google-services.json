@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "977185975055",
+    "project_id": "ramzan-hospital",
+    "storage_bucket": "ramzan-hospital.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977185975055:android:8b90348b701847a9562c7a",
+        "android_client_info": {
+          "package_name": "com.eyes.ramdazhospital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977185975055-7vpifgejes1cnrqc0967innenan5gk57.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eyes.ramdazhospital",
+            "certificate_hash": "f63c6e073798d1378d8dad2b80be5e2c50ef71f9"
+          }
+        },
+        {
+          "client_id": "977185975055-4sl7heno9ocbaf9gro3uo4jl1u2ifk15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT0Muzo5qWA8sozhFUs4uH6Mar3_ZBKXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977185975055-4sl7heno9ocbaf9gro3uo4jl1u2ifk15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
