@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class DoctorInfo {
   DoctorInfo({
     this.doctorID,
@@ -26,14 +28,14 @@ class DoctorInfo {
   }
 
   // ignore: sort_constructors_first
-  factory DoctorInfo.fromMap(Map<String, dynamic> map) {
+  factory DoctorInfo.fromMap(DocumentSnapshot<Map<String, dynamic>> docs) {
     return DoctorInfo(
-      doctorID: map['doctor_id'].toString(),
-      name: map['name'].toString(),
-      fee: double.parse(map['fee'].toString()),
-      depID: map['dep_id'].toString(),
-      addedBy: map['added_by'].toString(),
-      status: bool.fromEnvironment(map['status'].toString()),
+      doctorID: docs.data()!['doctor_id'].toString(),
+      name: docs.data()!['name'].toString(),
+      fee: double.parse(docs.data()!['fee'].toString()),
+      depID: docs.data()!['dep_id'].toString(),
+      addedBy: docs.data()!['added_by'].toString(),
+      status: bool.fromEnvironment(docs.data()!['status'].toString()),
     );
   }
 }

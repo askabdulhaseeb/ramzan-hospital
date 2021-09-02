@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PatientInfo {
   PatientInfo({
-    this.patient_id,
+    this.patientId,
     this.name,
     this.age,
     this.phone,
@@ -10,7 +10,7 @@ class PatientInfo {
     this.city,
     this.formattedAddress,
   });
-  String? patient_id;
+  String? patientId;
   String? name;
   String? age;
   String? phone;
@@ -20,7 +20,7 @@ class PatientInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'patient_id': patient_id ?? '',
+      'patient_id': patientId ?? '',
       'name': name ?? '',
       'age': age ?? 0,
       'phone': phone ?? '',
@@ -31,9 +31,10 @@ class PatientInfo {
   }
 
   // ignore: sort_constructors_first
-  factory PatientInfo.fromDocument(DocumentSnapshot<Map<String, dynamic>> docs) {
+  factory PatientInfo.fromDocument(
+      DocumentSnapshot<Map<String, dynamic>> docs) {
     return PatientInfo(
-      patient_id: docs.data()!['patient_id'].toString(),
+      patientId: docs.data()!['patient_id'].toString(),
       name: docs.data()!['name'].toString(),
       age: docs.data()!['age'].toString(),
       phone: docs.data()!['phone'].toString(),

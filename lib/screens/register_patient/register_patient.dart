@@ -75,7 +75,7 @@ class _RegisterPatientScreenState extends State<RegisterPatientScreen> {
                   showLoadingDislog(context);
                   if (_key.currentState!.validate()) {
                     final PatientInfo patient = PatientInfo(
-                      patient_id: const Uuid().v1(),
+                      patientId: const Uuid().v1(),
                       name: _name.text.trim(),
                       age: _age.text.trim(),
                       phone: _phoneNumber.text.trim(),

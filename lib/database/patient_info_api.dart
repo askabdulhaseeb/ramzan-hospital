@@ -9,7 +9,7 @@ class PatientInfoAPI {
   Future<void> addPatient(PatientInfo patient) async {
     await _instance
         .collection(_colloection)
-        .doc(patient.patient_id)
+        .doc(patient.patientId)
         .set(patient.toMap())
         .catchError((Object e) {
       CustomToast.errorToast(message: e.toString());
@@ -19,7 +19,7 @@ class PatientInfoAPI {
   Future<List<PatientInfo>> getPatients() async {
     QuerySnapshot<Map<String, dynamic>> docs =
         await _instance.collection('patients').get();
-    List<PatientInfo> patient = <PatientInfo>[];
+    final List<PatientInfo> patient = <PatientInfo>[];
     // ignore: avoid_function_literals_in_foreach_calls
     docs.docs.forEach((QueryDocumentSnapshot<Map<String, dynamic>> element) {
       patient.add(PatientInfo.fromDocument(element));
