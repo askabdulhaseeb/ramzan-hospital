@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ramdazhospital/database/auth.dart';
 import 'package:ramdazhospital/database/user_local_data.dart';
@@ -6,8 +7,11 @@ import 'package:ramdazhospital/screens/register_doctor/register_doctor.dart';
 import 'package:ramdazhospital/screens/register_patient/register_patient.dart';
 import 'package:ramdazhospital/screens/widgets/circular_profile_image.dart';
 import 'package:ramdazhospital/screens/widgets/copyright.dart';
+import 'package:ramdazhospital/screens/widgets/custom_textformfield.dart';
 import 'package:ramdazhospital/screens/widgets/register_department.dart';
 import 'package:ramdazhospital/utilities/utilities.dart';
+
+import 'register_treatment.dart';
 
 class CustomAppDrawer extends StatefulWidget {
   const CustomAppDrawer({
@@ -29,34 +33,45 @@ class _CustomAppDrawerState extends State<CustomAppDrawer> {
             const SizedBox(height: 60),
             _userHeaderDetails(),
             const Divider(),
-            const SizedBox(height: 20),
-            ListTile(
-              leading: const Icon(Icons.manage_accounts),
-              title: const Text('Add User'),
-              onTap: () {},
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  ListTile(
+                    leading: const Icon(Icons.manage_accounts),
+                    title: const Text('Add User'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.work),
+                    title: const Text('Add Department'),
+                    onTap: () {
+                      registerDepartment(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.text_rotate_up_outlined),
+                    title: const Text('Register Treatment'),
+                    onTap: () {
+                      registerTreatment(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.person_add),
+                    title: const Text('Register Doctor'),
+                    onTap: () => Navigator.of(context)
+                        .pushNamed(RegisterDoctorScreen.routeName),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.airline_seat_flat),
+                    title: const Text('Register Patient'),
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(RegisterPatientScreen.routeName);
+                    },
+                  ),
+                ],
+              ),
             ),
-            ListTile(
-              leading: const Icon(Icons.work),
-              title: const Text('Add Department'),
-              onTap: () {
-                registerDepartment(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.person_add),
-              title: const Text('Register Doctor'),
-              onTap: () => Navigator.of(context)
-                  .pushNamed(RegisterDoctorScreen.routeName),
-            ),
-            ListTile(
-              leading: const Icon(Icons.airline_seat_flat),
-              title: const Text('Register Patient'),
-              onTap: () {
-                Navigator.of(context)
-                    .pushNamed(RegisterPatientScreen.routeName);
-              },
-            ),
-            const Spacer(),
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),

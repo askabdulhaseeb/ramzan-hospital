@@ -8,17 +8,20 @@ class Department {
     this.depId,
     this.name,
     this.createdBy,
+    this.status = true,
   });
 
   String? depId;
   String? name;
   String? createdBy;
+  bool? status;
 
   Map<String, dynamic> toMap() {
     return {
       'dep_id': depId,
       'name': name,
       'created_by': createdBy ?? UserLocalData.getUserUID,
+      'status': status,
     };
   }
 
@@ -28,6 +31,7 @@ class Department {
       depId: docs.data()!['dep_id'].toString(),
       name: docs.data()!['name'].toString(),
       createdBy: docs.data()!['created_by'].toString(),
+      status: bool.fromEnvironment(docs.data()!['status'].toString()),
     );
   }
 }

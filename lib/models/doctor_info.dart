@@ -1,10 +1,18 @@
 class DoctorInfo {
-  DoctorInfo({this.doctorID, this.name, this.fee, this.depID, this.addedBy});
+  DoctorInfo({
+    this.doctorID,
+    this.name,
+    this.fee,
+    this.depID,
+    this.addedBy,
+    this.status = true,
+  });
   String? doctorID;
   String? name;
   double? fee;
   String? depID;
   String? addedBy;
+  bool? status;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -13,6 +21,7 @@ class DoctorInfo {
       'fee': fee,
       'dep_id': depID,
       'added_by': addedBy,
+      'status': status,
     };
   }
 
@@ -24,6 +33,7 @@ class DoctorInfo {
       fee: double.parse(map['fee'].toString()),
       depID: map['dep_id'].toString(),
       addedBy: map['added_by'].toString(),
+      status: bool.fromEnvironment(map['status'].toString()),
     );
   }
 }
