@@ -25,7 +25,18 @@ dependencies:
 
   url_launcher: ^6.0.9
   cupertino_icons: ^1.0.2
+  # create pdf document
+  pdf: ^3.1.0
 
+  # save file
+  path_provider: ^2.0.1
+
+  # open pdf document
+  open_file: ^3.1.0
+
+  # format dates for invoice
+  intl: ^0.17.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ramdazhospital/MakePdf/page/pdf_page.dart';
 import 'database/user_local_data.dart';
 import 'providers/department_provider.dart';
 import 'providers/patients_provider.dart';
@@ -8,6 +9,10 @@ import 'screens/home_screen/home_screen.dart';
 import 'screens/login_screen/login_screen.dart';
 import 'screens/register_doctor/register_doctor.dart';
 import 'screens/register_patient/register_patient.dart';
+
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,15 +40,16 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: (UserLocalData.getUserUID != '')
-            ? const HomeScreen()
-            : const LoginScreen(),
-        routes: <String, WidgetBuilder>{
-          LoginScreen.routeName: (_) => const LoginScreen(),
-          HomeScreen.routeName: (_) => const HomeScreen(),
-          RegisterPatientScreen.routeName: (_) => const RegisterPatientScreen(),
-          RegisterDoctorScreen.routeName: (_) => const RegisterDoctorScreen(),
-        },
+        home: PdfPage(),
+        // home: (UserLocalData.getUserUID != '')
+        //     ? const HomeScreen()
+        //     : const LoginScreen(),
+        // routes: <String, WidgetBuilder>{
+        //   LoginScreen.routeName: (_) => const LoginScreen(),
+        //   HomeScreen.routeName: (_) => const HomeScreen(),
+        //   RegisterPatientScreen.routeName: (_) => const RegisterPatientScreen(),
+        //   RegisterDoctorScreen.routeName: (_) => const RegisterDoctorScreen(),
+        // },
       ),
     );
   }
