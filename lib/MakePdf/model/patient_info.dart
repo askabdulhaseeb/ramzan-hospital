@@ -1,4 +1,4 @@
-import '../model/headingTitle.dart';
+import 'heading_title.dart';
 
 class PDF {
   final PatientInfo info;
