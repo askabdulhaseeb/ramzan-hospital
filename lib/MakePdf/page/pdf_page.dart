@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../api/pdf_api.dart';
 import '../api/pdf_slip_api.dart';
-import '../model/headingTitle.dart';
 import '../model/PatientInfo.dart';
+import '../model/headingTitle.dart';
 import '../widget/button_widget.dart';
 import '../widget/title_widget.dart';
 
