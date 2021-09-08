@@ -1,27 +1,22 @@
 import 'dart:io';
-import '../api/pdf_api.dart';
-import '../model/invoice.dart';
-import '../model/headingTitle.dart';
-import '../utils.dart';
+
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
 
+import '../api/pdf_api.dart';
+import '../model/PatientInfo.dart';
+import '../model/headingTitle.dart';
 class PdfInvoiceApi {
   static Future<File> generate(PDF invoice) async {
-    final pdf = Document();
-
+    final pw.Document pdf = Document();
     pdf.addPage(MultiPage(
-      build: (context) => [
+      build: (pw.Context context) => <pw.Widget>[
         buildHeader(invoice),
         Divider(),
         medicineSpace(invoice)
-        // SizedBox(height: 3 * PdfPageFormat.cm),
-        // buildTitle(invoice),
-        // buildInvoice(invoice),
-        // buildTotal(invoice),
       ],
-      footer: (context) => buildFooter(invoice),
+      footer: (Context context) => buildFooter(invoice),
     ));
 
     return PdfApi.saveDocument(name: 'my_invoice.pdf', pdf: pdf);
@@ -32,25 +27,27 @@ class PdfInvoiceApi {
   ) =>
       Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(right: 35),
+            padding: const EdgeInsets.only(right: 35),
             child: medicineLeftSpace(),
           ),
           Container(height: 450, child: VerticalDivider(thickness: 2)),
           medicineRightSpace(),
         ],
       );
-  static Widget patientInfo_1(InvoiceInfo info) {
-    final titles = <String>[
+  static Widget patientInfo_1(PatientInfo info) {
+    final List<String> titles = <String>[
       'Father/Husband:',
       'Contact:',
       'CNIC:',
+      // ignore: no_adjacent_strings_in_list
       'Address:'
-          'Patient Type:'
+        // ignore: missing_whitespace_between_adjacent_strings
+        'Patient Type:'
           'Consultant: '
     ];
-    final data = <String>[
+    final List<String> data = <String>[
       'Amin',
       '0316-7631138',
       'N/A',
@@ -58,29 +55,28 @@ class PdfInvoiceApi {
       'General',
       'N/A'
     ];
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(titles.length, (index) {
-        final title = titles[index];
-        final value = data[index];
+      // ignore: always_specify_types
+      children: List.generate(titles.length, (int index) {
+        final String title = titles[index];
+        final String value = data[index];
 
         return   Container(
       width: 200,
       child: Row(
-        children: [
+        children: <Widget>[
           Expanded(child: Text(title,)),
           Text(value, ),
         ],
       ),
     );
-        // buildText(title: title, value: value, width: 200);
       }),
     );
   }
 
   static Widget medicineRightSpace() {
-    final titles = <String>[
+    final List<String> titles = <String>[
       'Presenting Complaint',
       'History:',
       'Examination:',
@@ -89,11 +85,12 @@ class PdfInvoiceApi {
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(titles.length, (index) {
-        final title = titles[index];
+      // ignore: always_specify_types
+      children: List.generate(titles.length, (int index) {
+        final String title = titles[index];
 
         return Padding(
-            padding: EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 10),
             child: Text(title,
                 style: TextStyle(
                   fontSize: 15,
@@ -105,7 +102,7 @@ class PdfInvoiceApi {
   }
 
   static Widget medicineLeftSpace() {
-    final titles = <String>[
+    final List<String> titles = <String>[
       'Vitals',
       'Pulse:',
       'BP:',
@@ -115,11 +112,12 @@ class PdfInvoiceApi {
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(titles.length, (index) {
-        final title = titles[index];
+      // ignore: always_specify_types
+      children: List.generate(titles.length, (int index) {
+        final String title = titles[index];
 
         return Padding(
-            padding: pw.EdgeInsets.only(top: 10),
+            padding: const pw.EdgeInsets.only(top: 10),
             child: Text(title,
                 style: TextStyle(
                   fontSize: 15,
@@ -128,15 +126,14 @@ class PdfInvoiceApi {
       }),
     );
   }
-
   static Widget buildHeader(PDF invoice) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           SizedBox(height: 2 * PdfPageFormat.mm),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Hello World"),
+            children: <Widget>[
+              Text('Hello World'),
               buildPdfPage(invoice.headingTitle),
               Container(
                 height: 50,
@@ -152,11 +149,11 @@ class PdfInvoiceApi {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: <Widget>[
               patientInfo_1(invoice.info),
               patientInfo_2(invoice.info),
               Column(children: <Widget>[
-                Text('Token No', style: TextStyle(fontSize: 15)),
+                Text('Token No', style: const TextStyle(fontSize: 15)),
                 Text('32',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 35)),
@@ -165,25 +162,20 @@ class PdfInvoiceApi {
           ),
         ],
       );
-
-  
-
-  static Widget patientInfo_2(InvoiceInfo info) {
+  static Widget patientInfo_2(PatientInfo info) {
     
-    final titles = <String>[
+    final List<String> titles = <String>[
       'Reg Date & Time:',
       'Visit Date & Time::',
       'Visit No:',
+      // ignore: no_adjacent_strings_in_list
       'Invoice No:'
           'Fee:'
           'Department: '
     ];
-    final data = <String>[
+    final List<String> data = <String>[
       '14 August',
        '14 August',
-
-      // Utils.formatDate(info.date),
-      // Utils.formatDate(info.date),
       '188069',
       '177973',
       '100.0',
@@ -192,15 +184,16 @@ class PdfInvoiceApi {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(titles.length, (index) {
-        final title = titles[index];
-        final value = data[index];
+      // ignore: always_specify_types
+      children: List.generate(titles.length, (int index) {
+        final String title = titles[index];
+        final String value = data[index];
 
         return 
         Container(
       width: 200,
       child: Row(
-        children: [
+        children: <Widget>[
           Expanded(child: Text(title,)),
           Text(value, ),
         ],
@@ -212,25 +205,23 @@ class PdfInvoiceApi {
   }
 
   static Widget buildPdfPage(HeadingTitle headingTitle) => Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        children: <Widget>[
           SizedBox(height: 2 * PdfPageFormat.mm),
           Text(headingTitle.title,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
           SizedBox(height: 1 * PdfPageFormat.mm),
-          Text(headingTitle.subTitle, style: TextStyle(fontSize: 17)),
+          Text(headingTitle.subTitle, style: const TextStyle(fontSize: 17)),
           SizedBox(height: 1 * PdfPageFormat.mm),
-          Text(headingTitle.consultation, style: TextStyle(fontSize: 17)),
+          Text(headingTitle.consultation, style: const TextStyle(fontSize: 17)),
           SizedBox(height: 1 * PdfPageFormat.mm),
-          Text(headingTitle.slip, style: TextStyle(fontSize: 17)),
+          Text(headingTitle.slip, style: const TextStyle(fontSize: 17)),
         ],
       );
 
   
 
   static Widget buildFooter(PDF invoice) => Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        children: <Widget>[
           Divider(),
           SizedBox(height: 2 * PdfPageFormat.mm),
           Row(children: <Widget>[
@@ -240,7 +231,8 @@ class PdfInvoiceApi {
             SizedBox(height: 1 * PdfPageFormat.mm),
             Column(
                 children:<Widget>[
-                Text("_ _ _ _ _ _ _ _ _ _ _ _ ",style: pw.TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
+                // ignore: lines_longer_than_80_chars
+                Text('_ _ _ _ _ _ _ _ _ _ _ _ ',style: pw.TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
 
                 Text("Doctor's Name & Signature"),
                 ])
@@ -248,40 +240,19 @@ class PdfInvoiceApi {
         ],
       );
 
-  static buildSimpleText({
+  static pw.Row buildSimpleText({
     required String title,
     required String value,
   }) {
-    final style = TextStyle(fontWeight: FontWeight.bold);
-
+    final pw.TextStyle style = TextStyle(fontWeight: FontWeight.bold);
     return Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: pw.CrossAxisAlignment.end,
-      children: [
+      children: <Widget>[
         Text(title, style: style),
         SizedBox(width: 2 * PdfPageFormat.mm),
         Text(value),
       ],
     );
   }
-
-  // static buildText({
-  //   required String title,
-  //   required String value,
-  //   double width = double.infinity,
-  //   TextStyle? titleStyle,
-  //   bool unite = false,
-  // }) {
-  //   final style = titleStyle ?? TextStyle(fontWeight: FontWeight.bold);
-
-  //   return Container(
-  //     width: width,
-  //     child: Row(
-  //       children: [
-  //         Expanded(child: Text(title, style: style)),
-  //         Text(value, style: unite ? style : null),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

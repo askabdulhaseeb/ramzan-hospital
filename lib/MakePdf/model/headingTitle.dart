@@ -4,8 +4,6 @@ class HeadingTitle {
   final String subTitle;
   final String consultation;
   final String slip;
-
-
   const HeadingTitle({
     required this.title,
     required this.subTitle,
