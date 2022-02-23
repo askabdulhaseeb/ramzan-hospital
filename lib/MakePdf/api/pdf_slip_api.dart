@@ -1,12 +1,11 @@
 import 'dart:io';
-
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
-
 import '../api/pdf_api.dart';
-import '../model/patient_info.dart';
 import '../model/heading_title.dart';
+import '../model/patient_info.dart';
+
 class PdfInvoiceApi {
   static Future<File> generate(PDF invoice) async {
     final pw.Document pdf = Document();
